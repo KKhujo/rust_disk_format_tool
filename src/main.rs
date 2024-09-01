@@ -5,9 +5,9 @@ fn main() {
 
     let partition = prompt("Enter the partition path (e.g., /dev/sdb1):");
 
-    if !partition_exists(&partition) {
-        eprintln!("The partition {} does not exist or is invalid.", partition);
-        std::process::exit(1);
+        if !partition_exists(&partition) {
+            eprintln!("The partition {} does not exist or is invalid.", partition);
+            std::process::exit(1);
     }
 
     println!("Select the filesystem type:");
@@ -53,9 +53,9 @@ fn main() {
             "The partition {} has been formatted as {} successfully.",
             partition, filesystem
         );
-    } else {
-        eprintln!("Failed to format the partition. Please check the partition path and try again.");
-        io::stderr().write_all(&output.stderr).unwrap();
+        } else {
+            eprintln!("Failed to format the partition. Please check the partition path and try again.");
+            io::stderr().write_all(&output.stderr).unwrap();
     }
 }
 
@@ -64,8 +64,8 @@ fn prompt(message: &str) -> String {
     io::stdout().flush().unwrap();
 
     let mut input = String::new();
-    io::stdin().read_line(&mut input).expect("Failed to read line");
-    input.trim().to_string()
+        io::stdin().read_line(&mut input).expect("Failed to read line");
+        input.trim().to_string()
 }
 
 fn partition_exists(partition: &str) -> bool {
